@@ -8,12 +8,12 @@ namespace SquareOfOpposition.Common.Model
 {
     public class Square
     {
-        public string SaP { get; set; } // up-left
+        public string? SaP { get; set; } // up-left
 
-        public string SeP { get; set; } // up-right
+        public string? SeP { get; set; } // up-right
 
-        public string SiP { get; set; } // down-left
+        public string? SiP { get; set; } // down-left
 
-        public string SoP { get; set; } // down-right
+        public string? SoP { get; set; } // down-right
     }
 }
