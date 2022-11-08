@@ -16,5 +16,10 @@ namespace SquareOfOpposition
         {
             InitializeComponent();
         }
+
+        private void spanTreeControl1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

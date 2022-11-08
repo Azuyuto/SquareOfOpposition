@@ -38,7 +38,7 @@
             // 
             // SoPTxt
             // 
-            this.SoPTxt.Location = new System.Drawing.Point(568, 397);
+            this.SoPTxt.Location = new System.Drawing.Point(594, 413);
             this.SoPTxt.Name = "SoPTxt";
             this.SoPTxt.Size = new System.Drawing.Size(150, 27);
             this.SoPTxt.TabIndex = 0;
@@ -46,7 +46,7 @@
             // 
             // SePTxt
             // 
-            this.SePTxt.Location = new System.Drawing.Point(568, 115);
+            this.SePTxt.Location = new System.Drawing.Point(594, 115);
             this.SePTxt.Name = "SePTxt";
             this.SePTxt.Size = new System.Drawing.Size(150, 27);
             this.SePTxt.TabIndex = 1;
@@ -62,7 +62,7 @@
             // 
             // SiPTxt
             // 
-            this.SiPTxt.Location = new System.Drawing.Point(184, 397);
+            this.SiPTxt.Location = new System.Drawing.Point(184, 413);
             this.SiPTxt.Name = "SiPTxt";
             this.SiPTxt.Size = new System.Drawing.Size(150, 27);
             this.SiPTxt.TabIndex = 3;
@@ -70,7 +70,7 @@
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(737, 493);
+            this.SaveBtn.Location = new System.Drawing.Point(724, 503);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(117, 37);
             this.SaveBtn.TabIndex = 4;
@@ -80,7 +80,7 @@
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Location = new System.Drawing.Point(92, 493);
+            this.CancelBtn.Location = new System.Drawing.Point(93, 503);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(117, 37);
             this.CancelBtn.TabIndex = 5;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(966, 590);
+            this.ClientSize = new System.Drawing.Size(970, 622);
             this.Controls.Add(this.CancelBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.SiPTxt);
