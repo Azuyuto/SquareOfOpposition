@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareOfOpposition", "SquareOfOpposition\SquareOfOpposition.csproj", "{4E6177EA-D13A-41A1-A6A5-1034CEF6A2BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquareOfOpposition", "SquareOfOpposition\SquareOfOpposition.csproj", "{4E6177EA-D13A-41A1-A6A5-1034CEF6A2BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareOfOpposition.Common", "SquareOfOpposition.Common\SquareOfOpposition.Common.csproj", "{DFF4D5F2-2F7A-4667-A115-3454D570F5B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareOfOpposition.Controls", "SquareOfOpposition.Controls\SquareOfOpposition.Controls.csproj", "{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{4E6177EA-D13A-41A1-A6A5-1034CEF6A2BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E6177EA-D13A-41A1-A6A5-1034CEF6A2BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E6177EA-D13A-41A1-A6A5-1034CEF6A2BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF4D5F2-2F7A-4667-A115-3454D570F5B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF4D5F2-2F7A-4667-A115-3454D570F5B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF4D5F2-2F7A-4667-A115-3454D570F5B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF4D5F2-2F7A-4667-A115-3454D570F5B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
