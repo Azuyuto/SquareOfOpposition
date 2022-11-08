@@ -6,5 +6,16 @@ namespace SquareOfOpposition
         {
             InitializeComponent();
         }
+
+        private void addSquareBtn_Click(object sender, EventArgs e)
+        {
+            Form squareForm = new SquareForm();
+            squareForm.ShowDialog();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }
