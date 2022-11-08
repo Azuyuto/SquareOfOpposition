@@ -33,5 +33,10 @@ namespace SquareOfOpposition.Controls
                 e.Graphics.DrawLine(p, 0, 50, 100, 50);
             }
         }
+
+        private void SpanTreeControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -52,6 +52,8 @@
 
         #endregion
 
+#pragma warning disable CS0246 // Nie można znaleźć nazwy typu lub przestrzeni nazw „Controls” (brak dyrektywy using lub odwołania do zestawu?)
         private Controls.SpanTreeControl spanTreeControl1;
+#pragma warning restore CS0246 // Nie można znaleźć nazwy typu lub przestrzeni nazw „Controls” (brak dyrektywy using lub odwołania do zestawu?)
     }
 }

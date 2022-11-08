@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SquareOfOpposition.Common\SquareOfOpposition.Common.csproj" />
-  </ItemGroup>
+	<ProjectReference Include="..\SquareOfOpposition.Controls\SquareOfOpposition.Controls.csproj" />
+  </ItemGroup>  
 
 </Project>
