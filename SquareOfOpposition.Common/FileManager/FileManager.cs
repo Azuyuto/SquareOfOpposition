@@ -21,12 +21,12 @@ namespace SquareOfOpposition.Common.FileManager
             stream.Close();
         }
 
-        public static void readSquareFromFile()
+        public static void readSquareFromFile(string file)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(@"C:\Users\Marcin\Desktop\file.dat", FileMode.Open, FileAccess.Read);
+            Stream stream = new FileStream(file, FileMode.Open, FileAccess.Read);
             List<Square> squareList = (List<Square>)formatter.Deserialize(stream);
-
+            stream.Close();
             SquareManager.SquareManager.squareList = squareList;
         }
     }

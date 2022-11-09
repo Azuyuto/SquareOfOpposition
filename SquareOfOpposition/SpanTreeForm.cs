@@ -85,5 +85,23 @@ namespace SquareOfOpposition
                 }
             }
         }
+
+        private void openButton_Click(object sender, EventArgs e)
+        {
+            int size = -1;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string file = openFileDialog1.FileName;
+                try
+                {
+                    FileManager.readSquareFromFile(file);
+                }
+                catch (IOException)
+                {
+                }
+            }
+        }
     }
 }
