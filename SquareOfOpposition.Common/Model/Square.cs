@@ -15,5 +15,16 @@ namespace SquareOfOpposition.Common.Model
         public string? SiP { get; set; } // down-left
 
         public string? SoP { get; set; } // down-right
+
+        public List<Square> AI { get; set; }
+        public List<Square> EO { get; set; }
+        public List<Square> IO { get; set; }
+
+        public Square()
+        {
+            AI = new List<Square>();
+            EO = new List<Square>();
+            IO = new List<Square>();
+        }
     }
 }
