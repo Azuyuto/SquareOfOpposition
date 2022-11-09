@@ -131,6 +131,7 @@ namespace SquareOfOpposition
         private void SaveBtn_Click(object sender, EventArgs e)
         {
             SquareManager.addToSquareList(square);
+            SpanTreeForm.Instance.RefreshTree();
             this.Close();
         }
 

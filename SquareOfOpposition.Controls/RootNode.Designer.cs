@@ -34,6 +34,7 @@
             // inLabel
             // 
             this.inLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inLabel.BackColor = System.Drawing.Color.DarkBlue;
             this.inLabel.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.inLabel.ForeColor = System.Drawing.SystemColors.Control;
             this.inLabel.Location = new System.Drawing.Point(0, 0);

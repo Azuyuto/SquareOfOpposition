@@ -17,5 +17,11 @@ namespace SquareOfOpposition.Controls
         {
             InitializeComponent();
         }
+
+        public void setValues(string? upSentence, string? downSentence)
+        {
+            this.sentenceUpLabel.Text = upSentence;
+            this.sentenceDownLabel.Text = downSentence;
+        }
     }
 }
