@@ -48,7 +48,7 @@
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 1;
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(954, 421);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(1258, 421);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // menuPanel
@@ -95,7 +95,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(954, 421);
+            this.ClientSize = new System.Drawing.Size(1258, 421);
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "SpanTreeForm";
             this.Text = "SpanTreeForm";

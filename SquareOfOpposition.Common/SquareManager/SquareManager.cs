@@ -9,7 +9,22 @@ namespace SquareOfOpposition.Common.SquareManager
 {
     public static class SquareManager
     {
-        public static List<Square> squareList = new List<Square>();
+        public static List<Square> squareList = new List<Square>() { 
+            new Square() { 
+                SaP = "dupa",
+                SeP = "cipa",
+                SoP = "kutas",
+                SiP = "cycki",
+                EO = new List<Square>() {
+                    new Square() {
+                        SaP = "dupa",
+                        SeP = "cipa",
+                        SoP = "kutas",
+                        SiP = "cycki"
+                    }
+                }
+            }
+        };
 
         public static void addToSquareList(Square square)
         {

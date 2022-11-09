@@ -1,4 +1,5 @@
 ﻿using ControlTreeView;
+using SquareOfOpposition.Common.Model;
 using SquareOfOpposition.Common.SquareManager;
 using SquareOfOpposition.Controls;
 using System;
@@ -16,13 +17,27 @@ namespace SquareOfOpposition
 {
     public partial class SpanTreeForm : Form
     {
-        public SpanTreeForm()
+        static SpanTreeForm? instance;
+
+        public static SpanTreeForm Instance
         {
-            InitializeComponent();
-            refreshTree();
+            get
+            {
+                if (instance == null)
+                    return new SpanTreeForm();
+
+                return instance;
+            }
         }
 
-        private void refreshTree()
+        public SpanTreeForm()
+        {
+            instance = this;
+            InitializeComponent();
+            RefreshTree();
+        }
+
+        public void RefreshTree()
         {
             if(this.tableLayoutPanel.GetControlFromPosition(1, 0) != null)
             {
@@ -36,19 +51,46 @@ namespace SquareOfOpposition
             this.tableLayoutPanel.Controls.Add(sampleCTreeView, 1, 0);
             sampleCTreeView.BeginUpdate();
             var squares = SquareManager.squareList;
-            var i = 1;
-            //foreach(var square in squares)
-            //{
-                var root = new RootNode();
-                root.setTitle("Square " + i);
-                sampleCTreeView.Nodes.Add(new CTreeNode("Root Node", root));
-            //}
-            for (int x = 0; x < 3; x++)
+            var i = 0;
+            foreach (var square in squares)
             {
-                var node = new MyNode();
-                sampleCTreeView.Nodes[0].Nodes.Add(new CTreeNode("node " + x, node));
+                var root = new RootNode();
+                root.setTitle("Square " + (i + 1));
+                sampleCTreeView.Nodes.Add(new CTreeNode("Root Node", root));
+                addNodesToNode(sampleCTreeView.Nodes[i], square);
+                i++;
             }
             sampleCTreeView.EndUpdate();
+        }
+
+        public void addNodesToNode(CTreeNode node, Square square)
+        {
+            var AI_node = new MyNode();
+            AI_node.setValues(square.SaP, square.SiP);
+            node.Nodes.Add(new CTreeNode(AI_node));
+
+            var EO_node = new MyNode();
+            EO_node.setValues(square.SeP, square.SoP);
+            node.Nodes.Add(new CTreeNode(EO_node));
+
+            var IO_node = new MyNode();
+            IO_node.setValues(square.SiP, square.SoP);
+            node.Nodes.Add(new CTreeNode(IO_node));
+
+            foreach(var sub_square in square.AI)
+            {
+                addNodesToNode(node.Nodes[0], sub_square);
+            }
+
+            foreach (var sub_square in square.EO)
+            {
+                addNodesToNode(node.Nodes[1], sub_square);
+            }
+
+            foreach (var sub_square in square.IO)
+            {
+                addNodesToNode(node.Nodes[2], sub_square);
+            }
         }
     }
 }
