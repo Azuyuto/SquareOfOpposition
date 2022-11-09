@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace SquareOfOpposition.Common.SquareManager
 {
+    [Serializable]
     public static class SquareManager
     {
+
         public static List<Square> squareList = new List<Square>();
 
         public static void addToSquareList(Square square)
@@ -16,5 +18,14 @@ namespace SquareOfOpposition.Common.SquareManager
             squareList.Add(square);
         }
 
+        public static List<Square> getSquareList()
+        {
+            return squareList;
+        }
+
+        public static void setSquareList(List<Square> list)
+        {
+            squareList = list;
+        }
     }
 }

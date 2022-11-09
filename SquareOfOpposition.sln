@@ -5,9 +5,11 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquareOfOpposition", "SquareOfOpposition\SquareOfOpposition.csproj", "{4E6177EA-D13A-41A1-A6A5-1034CEF6A2BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareOfOpposition.Common", "SquareOfOpposition.Common\SquareOfOpposition.Common.csproj", "{DFF4D5F2-2F7A-4667-A115-3454D570F5B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquareOfOpposition.Common", "SquareOfOpposition.Common\SquareOfOpposition.Common.csproj", "{DFF4D5F2-2F7A-4667-A115-3454D570F5B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareOfOpposition.Controls", "SquareOfOpposition.Controls\SquareOfOpposition.Controls.csproj", "{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquareOfOpposition.Controls", "SquareOfOpposition.Controls\SquareOfOpposition.Controls.csproj", "{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{04522127-8710-4D81-BDF0-5E7EE892A2CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
