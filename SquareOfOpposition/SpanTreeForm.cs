@@ -1,5 +1,6 @@
 ﻿using ControlTreeView;
 using SquareOfOpposition.Common.Model;
+using SquareOfOpposition.Common.FileManager;
 using SquareOfOpposition.Common.SquareManager;
 using SquareOfOpposition.Controls;
 using System;
@@ -90,6 +91,40 @@ namespace SquareOfOpposition
             foreach (var sub_square in square.IO)
             {
                 addNodesToNode(node.Nodes[2], sub_square);
+            }
+        }
+
+        private void addSquare_Click(object sender, EventArgs e)
+        {
+            SquareForm squareForm = new SquareForm();
+            squareForm.ShowDialog();
+            squareForm.FormClosed += FormClosing;
+        }
+
+        void FormClosing(object sender, FormClosedEventArgs e)
+        {
+            refreshTree();
+        }
+        private void tableLayoutPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void saveButton_Click(object sender, EventArgs e)
+        {
+            int size = -1;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string file = openFileDialog1.FileName;
+                try
+                {
+                    FileManager.saveSquareToFile(file);
+                }
+                catch (IOException)
+                {
+                }
             }
         }
     }

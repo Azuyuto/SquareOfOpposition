@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SquareOfOpposition.Common.Model
 {
+    [Serializable]
     public class Square
     {
         public string? SaP { get; set; } // up-left
