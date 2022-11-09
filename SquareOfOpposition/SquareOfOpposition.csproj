@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ControlTreeView\ControlTreeView.csproj" />
     <ProjectReference Include="..\SquareOfOpposition.Common\SquareOfOpposition.Common.csproj" />
 	<ProjectReference Include="..\SquareOfOpposition.Controls\SquareOfOpposition.Controls.csproj" />
   </ItemGroup>  

@@ -1,6 +1,6 @@
 ﻿namespace SquareOfOpposition.Controls
 {
-    partial class SpanTreeControl
+    partial class RootNode
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,24 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.inLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // SpanTreeControl
+            // inLabel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.inLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.inLabel.Font = new System.Drawing.Font("Showcard Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.inLabel.ForeColor = System.Drawing.SystemColors.Control;
+            this.inLabel.Location = new System.Drawing.Point(0, 0);
+            this.inLabel.Name = "inLabel";
+            this.inLabel.Size = new System.Drawing.Size(150, 35);
+            this.inLabel.TabIndex = 0;
+            this.inLabel.Text = "IN";
+            this.inLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // RootNode
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "SpanTreeControl";
-            this.Size = new System.Drawing.Size(457, 267);
-            this.Load += new System.EventHandler(this.SpanTreeControl_Load);
+            this.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Controls.Add(this.inLabel);
+            this.Name = "RootNode";
+            this.Size = new System.Drawing.Size(150, 35);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private RoundButton button_AI;
-        private RoundButton button_EO;
-        private RoundButton button_IO;
+        private Label inLabel;
     }
 }

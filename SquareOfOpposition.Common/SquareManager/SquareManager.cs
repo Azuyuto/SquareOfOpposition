@@ -15,6 +15,5 @@ namespace SquareOfOpposition.Common.SquareManager
         {
             squareList.Add(square);
         }
-
     }
 }
