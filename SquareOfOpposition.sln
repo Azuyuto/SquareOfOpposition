@@ -10,7 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquareOfOpposition.Controls", "SquareOfOpposition.Controls\SquareOfOpposition.Controls.csproj", "{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{04522127-8710-4D81-BDF0-5E7EE892A2CD}"
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquareOfOpposition.Controls", "SquareOfOpposition.Controls\SquareOfOpposition.Controls.csproj", "{DBE38694-E2FE-4F57-9AF1-B9BBECD0F6DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTreeView", "ControlTreeView\ControlTreeView.csproj", "{CDC9BDBF-6F7C-4F08-B9D5-396F39E85DC1}"
 EndProject

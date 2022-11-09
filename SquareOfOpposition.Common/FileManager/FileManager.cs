@@ -13,10 +13,10 @@ namespace SquareOfOpposition.Common.FileManager
 {
     public static class FileManager
     {
-        public static void saveSquareToFile()
+        public static void saveSquareToFile(string file)
         {
             IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(@"C:\Users\Marcin\Desktop\file.dat", FileMode.Create, FileAccess.Write);
+            Stream stream = new FileStream(file, FileMode.Create, FileAccess.Write);
             formatter.Serialize(stream, SquareManager.SquareManager.getSquareList());
             stream.Close();
         }
