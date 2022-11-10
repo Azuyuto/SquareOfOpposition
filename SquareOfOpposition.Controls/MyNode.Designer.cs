@@ -34,7 +34,7 @@
             this.sentenceDownPanel = new System.Windows.Forms.Panel();
             this.sentenceDownLabel = new System.Windows.Forms.Label();
             this.buttonPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.addSquareButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
             this.sentenceUpPanel.SuspendLayout();
             this.sentenceDownPanel.SuspendLayout();
@@ -55,7 +55,7 @@
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel.Size = new System.Drawing.Size(200, 70);
+            this.tableLayoutPanel.Size = new System.Drawing.Size(134, 70);
             this.tableLayoutPanel.TabIndex = 0;
             // 
             // sentenceUpPanel
@@ -64,7 +64,7 @@
             this.sentenceUpPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sentenceUpPanel.Location = new System.Drawing.Point(3, 3);
             this.sentenceUpPanel.Name = "sentenceUpPanel";
-            this.sentenceUpPanel.Size = new System.Drawing.Size(194, 17);
+            this.sentenceUpPanel.Size = new System.Drawing.Size(128, 17);
             this.sentenceUpPanel.TabIndex = 0;
             // 
             // sentenceUpLabel
@@ -72,7 +72,7 @@
             this.sentenceUpLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sentenceUpLabel.Location = new System.Drawing.Point(0, 0);
             this.sentenceUpLabel.Name = "sentenceUpLabel";
-            this.sentenceUpLabel.Size = new System.Drawing.Size(194, 17);
+            this.sentenceUpLabel.Size = new System.Drawing.Size(128, 17);
             this.sentenceUpLabel.TabIndex = 0;
             this.sentenceUpLabel.Text = "label1";
             this.sentenceUpLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,7 +83,7 @@
             this.sentenceDownPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sentenceDownPanel.Location = new System.Drawing.Point(3, 26);
             this.sentenceDownPanel.Name = "sentenceDownPanel";
-            this.sentenceDownPanel.Size = new System.Drawing.Size(194, 17);
+            this.sentenceDownPanel.Size = new System.Drawing.Size(128, 17);
             this.sentenceDownPanel.TabIndex = 1;
             // 
             // sentenceDownLabel
@@ -91,33 +91,34 @@
             this.sentenceDownLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.sentenceDownLabel.Location = new System.Drawing.Point(0, 0);
             this.sentenceDownLabel.Name = "sentenceDownLabel";
-            this.sentenceDownLabel.Size = new System.Drawing.Size(194, 17);
+            this.sentenceDownLabel.Size = new System.Drawing.Size(128, 17);
             this.sentenceDownLabel.TabIndex = 1;
             this.sentenceDownLabel.Text = "label2";
             this.sentenceDownLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // buttonPanel
             // 
-            this.buttonPanel.Controls.Add(this.button1);
+            this.buttonPanel.Controls.Add(this.addSquareButton);
             this.buttonPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonPanel.Location = new System.Drawing.Point(0, 46);
             this.buttonPanel.Margin = new System.Windows.Forms.Padding(0);
             this.buttonPanel.Name = "buttonPanel";
-            this.buttonPanel.Size = new System.Drawing.Size(200, 24);
+            this.buttonPanel.Size = new System.Drawing.Size(134, 24);
             this.buttonPanel.TabIndex = 2;
             // 
-            // button1
+            // addSquareButton
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(0, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 24);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Add square";
-            this.button1.UseVisualStyleBackColor = false;
+            this.addSquareButton.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.addSquareButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.addSquareButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addSquareButton.ForeColor = System.Drawing.SystemColors.Control;
+            this.addSquareButton.Location = new System.Drawing.Point(0, 0);
+            this.addSquareButton.Name = "addSquareButton";
+            this.addSquareButton.Size = new System.Drawing.Size(134, 24);
+            this.addSquareButton.TabIndex = 0;
+            this.addSquareButton.Text = "Add square";
+            this.addSquareButton.UseVisualStyleBackColor = false;
+            this.addSquareButton.Click += new System.EventHandler(this.addSquareButton_Click);
             // 
             // MyNode
             // 
@@ -126,7 +127,7 @@
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.Controls.Add(this.tableLayoutPanel);
             this.Name = "MyNode";
-            this.Size = new System.Drawing.Size(200, 70);
+            this.Size = new System.Drawing.Size(134, 70);
             this.tableLayoutPanel.ResumeLayout(false);
             this.sentenceUpPanel.ResumeLayout(false);
             this.sentenceDownPanel.ResumeLayout(false);
@@ -143,6 +144,6 @@
         private Panel sentenceDownPanel;
         private Label sentenceDownLabel;
         private Panel buttonPanel;
-        private Button button1;
+        private Button addSquareButton;
     }
 }

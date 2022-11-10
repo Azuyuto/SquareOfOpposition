@@ -12,24 +12,44 @@ namespace SquareOfOpposition.Common.SquareManager
     {
         public static List<Square> squareList = new List<Square>() { 
             new Square() { 
-                SaP = "dupa",
-                SeP = "cipa",
-                SoP = "kutas",
-                SiP = "cycki",
+                SaP = "A",
+                SeP = "E",
+                SoP = "O",
+                SiP = "I",
                 EO = new List<Square>() {
                     new Square() {
-                        SaP = "dupa",
-                        SeP = "cipa",
-                        SoP = "kutas",
-                        SiP = "cycki"
+                        SaP = "A",
+                        SeP = "E",
+                        SoP = "O",
+                        SiP = "I",
                     }
                 }
             }
         };
 
-        public static void addToSquareList(Square square)
+        public static void addToSquareList(Square square, Square parentSquare = null, string squareType = null)
         {
-            squareList.Add(square);
+            if(parentSquare == null)
+            {
+                squareList.Add(square);
+            }
+            else
+            {
+                switch (squareType)
+                {
+                    case "AI":
+                        parentSquare.AI.Add(square);
+                        break;
+                    case "EO":
+                        parentSquare.EO.Add(square);
+                        break;
+                    case "IO":
+                        parentSquare.IO.Add(square);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         public static List<Square> getSquareList()

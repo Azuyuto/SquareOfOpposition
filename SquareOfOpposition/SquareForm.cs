@@ -16,11 +16,22 @@ namespace SquareOfOpposition
 {
     public partial class SquareForm : Form
     {
-        Square square;
+        public Square ParentSquare { get; set; }
+        public string SquareType { get; set; }
+        public Square square { get; set; }
+
         public SquareForm()
         {
             InitializeComponent();
             square = new Square();
+        }
+
+        public SquareForm(Square square, string squareType)
+        {
+            InitializeComponent();
+            this.square = new Square();
+            ParentSquare = square;
+            SquareType = squareType;
         }
 
         private void SquareForm_Load(object sender, EventArgs e)
@@ -130,7 +141,7 @@ namespace SquareOfOpposition
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            SquareManager.addToSquareList(square);
+            SquareManager.addToSquareList(square, ParentSquare, SquareType);
             SpanTreeForm.Instance.RefreshTree();
             this.Close();
         }
