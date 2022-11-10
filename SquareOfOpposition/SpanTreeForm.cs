@@ -67,15 +67,18 @@ namespace SquareOfOpposition
         public void addNodesToNode(CTreeNode node, Square square)
         {
             var AI_node = new MyNode();
-            AI_node.setValues(square.SaP, square.SiP);
+            AI_node.setValues(square.SaP, square.SiP, square, "AI");
+            AI_node.ButtonClick += c_addSquare_Click;
             node.Nodes.Add(new CTreeNode(AI_node));
 
             var EO_node = new MyNode();
-            EO_node.setValues(square.SeP, square.SoP);
+            EO_node.setValues(square.SeP, square.SoP, square, "EO");
+            EO_node.ButtonClick += c_addSquare_Click;
             node.Nodes.Add(new CTreeNode(EO_node));
 
             var IO_node = new MyNode();
-            IO_node.setValues(square.SiP, square.SoP);
+            IO_node.setValues(square.SiP, square.SoP, square, "IO");
+            IO_node.ButtonClick += c_addSquare_Click;
             node.Nodes.Add(new CTreeNode(IO_node));
 
             foreach(var sub_square in square.AI)
@@ -98,13 +101,14 @@ namespace SquareOfOpposition
         {
             SquareForm squareForm = new SquareForm();
             squareForm.ShowDialog();
-            squareForm.FormClosed += FormClosing;
         }
 
-        void FormClosing(object sender, FormClosedEventArgs e)
+        static void c_addSquare_Click(object sender, ButtonClick e)
         {
-            refreshTree();
+            SquareForm squareForm = new SquareForm(e.ParentSquare, e.SquareType);
+            squareForm.ShowDialog();
         }
+
         private void tableLayoutPanel_Paint(object sender, PaintEventArgs e)
         {
 
