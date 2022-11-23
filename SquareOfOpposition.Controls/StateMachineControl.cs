@@ -23,6 +23,22 @@ namespace SquareOfOpposition.Controls
             RotateArrow();
         }
 
+        private void SetArrowVisible()
+        {
+            if (!square.AI_IO)
+                this.arrowAIIO.Tag = true;
+            if (!square.IO_AI)
+                this.arrowIOAI.Tag = true;
+            if (!square.EO_AI)
+                this.arrowEOAI.Tag = true;
+            if (!square.AI_EO)
+                this.arrowAIEO.Tag = true;
+            if (!square.EO_IO)
+                this.arrowEOIO.Tag = true;
+            if (!square.IO_EO)
+                this.arrowIOEO.Tag = true;
+        }
+
         private void RotateArrow()
         {
             Image imgArrowEOAI = this.arrowEOAI.Image;
@@ -45,6 +61,7 @@ namespace SquareOfOpposition.Controls
         public void setValue(Square square)
         {
             this.square = square;
+            SetArrowVisible();
         }
 
         private void StateMachineControl_Load(object sender, EventArgs e)
@@ -91,10 +108,12 @@ namespace SquareOfOpposition.Controls
                     if ((bool?)arrowControl.Tag == null || (bool?)arrowControl.Tag == true)
                     {
                         arrowControl.Tag = false;
+                        square[pressedButton.Text + "_" + secondButton.Text] = true;
                     }
                     else
                     {
                         arrowControl.Tag = true;
+                        square[pressedButton.Text + "_" + secondButton.Text] = false;
                     }
                 }
 

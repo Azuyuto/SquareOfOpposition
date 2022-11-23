@@ -29,7 +29,13 @@ namespace SquareOfOpposition.Common.SquareManager
 
         public static void addToSquareList(Square square, Square parentSquare = null, string squareType = null)
         {
-            if(parentSquare == null)
+            square.IO_AI = true;
+            square.AI_IO = true;
+            square.EO_AI = true;
+            square.AI_EO = true;
+            square.EO_IO = true;
+            square.IO_EO = true;
+            if (parentSquare == null)
             {
                 squareList.Add(square);
             }
