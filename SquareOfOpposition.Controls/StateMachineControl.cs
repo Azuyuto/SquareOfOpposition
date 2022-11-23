@@ -71,7 +71,7 @@ namespace SquareOfOpposition.Controls
         {
             if (pressedButton != null)
             {
-                drawArrow();
+                drawArrow((RoundButton)sender);
             }
             else
             {
@@ -79,11 +79,27 @@ namespace SquareOfOpposition.Controls
             }
         }
 
-        private void drawArrow()
+        private void drawArrow(RoundButton secondButton)
         {
             if (pressedButton != null)
             {
-                // press second button and draw line
+                var arrowStringValue = "arrow" + pressedButton.Text + secondButton.Text;
+                var arrowControl = this.Controls.Find(arrowStringValue, false).FirstOrDefault();
+
+                if(arrowControl != null)
+                {
+                    if ((bool?)arrowControl.Tag == null || (bool?)arrowControl.Tag == true)
+                    {
+                        arrowControl.Tag = false;
+                    }
+                    else
+                    {
+                        arrowControl.Tag = true;
+                    }
+                }
+
+                this.Invalidate();
+                this.Update();
 
                 pressedButton = null;
             }
@@ -91,13 +107,17 @@ namespace SquareOfOpposition.Controls
 
         private void frame_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.Clear(Color.White);
             DoubleBuffered = true;
             for (int i = 0; i < Controls.Count; i++)
                 if (Controls[i].GetType() == typeof(PictureBox))
                 {
                     var p = Controls[i] as PictureBox;
+                    if((bool?)p.Tag == null || (bool?)p.Tag == true)
+                    {
+                        e.Graphics.DrawImage(p.Image, p.Left, p.Top, p.Width, p.Height);
+                    }
                     p.Visible = false;
-                    e.Graphics.DrawImage(p.Image, p.Left, p.Top, p.Width, p.Height);
                 }
 
             StateMachineControl panel = (StateMachineControl)sender;

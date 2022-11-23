@@ -60,7 +60,7 @@
             this.AIButton.Name = "AIButton";
             this.AIButton.Size = new System.Drawing.Size(54, 47);
             this.AIButton.TabIndex = 0;
-            this.AIButton.Text = "A I";
+            this.AIButton.Text = "AI";
             this.AIButton.TextColor = System.Drawing.Color.White;
             this.AIButton.UseVisualStyleBackColor = false;
             this.AIButton.Click += new System.EventHandler(this.AIButton_Click);
@@ -80,7 +80,7 @@
             this.IOButton.Name = "IOButton";
             this.IOButton.Size = new System.Drawing.Size(54, 47);
             this.IOButton.TabIndex = 1;
-            this.IOButton.Text = "I O";
+            this.IOButton.Text = "IO";
             this.IOButton.TextColor = System.Drawing.Color.White;
             this.IOButton.UseVisualStyleBackColor = false;
             this.IOButton.Click += new System.EventHandler(this.IOButton_Click);
@@ -100,7 +100,7 @@
             this.EOButton.Name = "EOButton";
             this.EOButton.Size = new System.Drawing.Size(54, 47);
             this.EOButton.TabIndex = 2;
-            this.EOButton.Text = "E O";
+            this.EOButton.Text = "EO";
             this.EOButton.TextColor = System.Drawing.Color.White;
             this.EOButton.UseVisualStyleBackColor = false;
             this.EOButton.Click += new System.EventHandler(this.EOButton_Click);
