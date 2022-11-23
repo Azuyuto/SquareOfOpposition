@@ -88,17 +88,6 @@ namespace SquareOfOpposition.Controls
                 pressedButton = null;
             }
         }
-        private void PaintControl(object sender, PaintEventArgs e)
-        {
-            StateMachineControl panel = (StateMachineControl)sender;
-            float width = (float)4.0;
-            Pen pen = new Pen(SystemColors.ControlDark, width);
-            pen.DashStyle = DashStyle.Dot;
-            e.Graphics.DrawLine(pen, 0, 0, 0, panel.Height - 0);
-            e.Graphics.DrawLine(pen, 0, 0, panel.Width - 0, 0);
-            e.Graphics.DrawLine(pen, panel.Width - 2, panel.Height - 2, 0, panel.Height - 2);
-            e.Graphics.DrawLine(pen, panel.Width - 2, panel.Height - 2, panel.Width - 2, 0);
-        }
 
         private void frame_Paint(object sender, PaintEventArgs e)
         {
@@ -110,6 +99,15 @@ namespace SquareOfOpposition.Controls
                     p.Visible = false;
                     e.Graphics.DrawImage(p.Image, p.Left, p.Top, p.Width, p.Height);
                 }
+
+            StateMachineControl panel = (StateMachineControl)sender;
+            float width = (float)4.0;
+            Pen pen = new Pen(SystemColors.ControlDark, width);
+            pen.DashStyle = DashStyle.Dot;
+            e.Graphics.DrawLine(pen, 0, 0, 0, panel.Height - 0);
+            e.Graphics.DrawLine(pen, 0, 0, panel.Width - 0, 0);
+            e.Graphics.DrawLine(pen, panel.Width - 2, panel.Height - 2, 0, panel.Height - 2);
+            e.Graphics.DrawLine(pen, panel.Width - 2, panel.Height - 2, panel.Width - 2, 0);
         }
     }
 }
