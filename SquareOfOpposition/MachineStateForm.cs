@@ -61,9 +61,9 @@ namespace SquareOfOpposition
 
         public void addNodesToNode(CTreeNode node, Square square)
         {
-            var square = new MyNode();
-            square.setValues(square, "IO");
-            node.Nodes.Add(new CTreeNode(square));
+            var stateMachine = new StateMachineControl();
+            stateMachine.setValue(square);
+            node.Nodes.Add(new CTreeNode(stateMachine));
 
             foreach (var sub_square in square.AI)
             {
@@ -72,12 +72,12 @@ namespace SquareOfOpposition
 
             foreach (var sub_square in square.EO)
             {
-                addNodesToNode(node.Nodes[1], sub_square);
+                addNodesToNode(node.Nodes[0], sub_square);
             }
 
             foreach (var sub_square in square.IO)
             {
-                addNodesToNode(node.Nodes[2], sub_square);
+                addNodesToNode(node.Nodes[0], sub_square);
             }
         }
     }

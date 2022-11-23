@@ -35,12 +35,24 @@ namespace SquareOfOpposition
 
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            // TODO:
+            int size = -1;
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
+            if (result == DialogResult.OK) // Test result.
+            {
+                string file = openFileDialog1.FileName;
+                try
+                {
+                    FileManager.readSquareFromFile(file);
+                }
+                catch (IOException)
+                {
+                }
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            // TODO: check it
             int size = -1;
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.

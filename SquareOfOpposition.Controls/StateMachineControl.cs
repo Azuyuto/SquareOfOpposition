@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ControlTreeView;
+using SquareOfOpposition.Common.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,12 +12,18 @@ using System.Windows.Forms;
 
 namespace SquareOfOpposition.Controls
 {
-    public partial class StateMachineControl : UserControl
+    public partial class StateMachineControl : NodeControl
     {
         RoundButton pressedButton;
+        Square square;
         public StateMachineControl()
         {
             InitializeComponent();
+        }
+
+        public void setValue(Square square)
+        {
+            this.square = square;
         }
 
         private void StateMachineControl_Load(object sender, EventArgs e)
