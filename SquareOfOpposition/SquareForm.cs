@@ -143,6 +143,7 @@ namespace SquareOfOpposition
         {
             SquareManager.addToSquareList(square, ParentSquare, SquareType);
             SpanTreeForm.Instance.RefreshTree();
+            MachineStateForm.Instance.RefreshTree();
             this.Close();
         }
 

@@ -1,6 +1,5 @@
 ﻿using ControlTreeView;
 using SquareOfOpposition.Common.Model;
-using SquareOfOpposition.Common.FileManager;
 using SquareOfOpposition.Common.SquareManager;
 using SquareOfOpposition.Controls;
 using System;
@@ -12,26 +11,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SquareOfOpposition
 {
-    public partial class SpanTreeForm : Form
+    public partial class MachineStateForm : Form
     {
-        static SpanTreeForm? instance;
+        static MachineStateForm? instance;
 
-        public static SpanTreeForm Instance
+        public static MachineStateForm Instance
         {
             get
             {
                 if (instance == null)
-                    return new SpanTreeForm();
+                    return new MachineStateForm();
 
                 return instance;
             }
         }
 
-        public SpanTreeForm()
+        public MachineStateForm()
         {
             instance = this;
             InitializeComponent();
@@ -53,7 +51,7 @@ namespace SquareOfOpposition
             foreach (var square in squares)
             {
                 var root = new RootNode();
-                root.setTitle("Square " + (i + 1));
+                root.setTitle("INPUT " + (i + 1));
                 sampleCTreeView.Nodes.Add(new CTreeNode("Root Node", root));
                 addNodesToNode(sampleCTreeView.Nodes[i], square);
                 i++;
@@ -63,22 +61,11 @@ namespace SquareOfOpposition
 
         public void addNodesToNode(CTreeNode node, Square square)
         {
-            var AI_node = new MyNode();
-            AI_node.setValues(square.SaP, square.SiP, square, "AI");
-            AI_node.ButtonClick += c_addSquare_Click;
-            node.Nodes.Add(new CTreeNode(AI_node));
+            var square = new MyNode();
+            square.setValues(square, "IO");
+            node.Nodes.Add(new CTreeNode(square));
 
-            var EO_node = new MyNode();
-            EO_node.setValues(square.SeP, square.SoP, square, "EO");
-            EO_node.ButtonClick += c_addSquare_Click;
-            node.Nodes.Add(new CTreeNode(EO_node));
-
-            var IO_node = new MyNode();
-            IO_node.setValues(square.SiP, square.SoP, square, "IO");
-            IO_node.ButtonClick += c_addSquare_Click;
-            node.Nodes.Add(new CTreeNode(IO_node));
-
-            foreach(var sub_square in square.AI)
+            foreach (var sub_square in square.AI)
             {
                 addNodesToNode(node.Nodes[0], sub_square);
             }
@@ -92,12 +79,6 @@ namespace SquareOfOpposition
             {
                 addNodesToNode(node.Nodes[2], sub_square);
             }
-        }
-
-        static void c_addSquare_Click(object sender, ButtonClick e)
-        {
-            SquareForm squareForm = new SquareForm(e.ParentSquare, e.SquareType);
-            squareForm.ShowDialog();
         }
     }
 }
