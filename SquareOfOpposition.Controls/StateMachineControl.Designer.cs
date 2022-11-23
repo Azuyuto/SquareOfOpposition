@@ -98,7 +98,7 @@
             this.Controls.Add(this.IOButton);
             this.Controls.Add(this.AIButton);
             this.Name = "StateMachineControl";
-            this.Size = new System.Drawing.Size(584, 443);
+            this.Size = new System.Drawing.Size(589, 447);
             this.Load += new System.EventHandler(this.StateMachineControl_Load);
             this.ResumeLayout(false);
 
