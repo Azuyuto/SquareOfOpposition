@@ -25,20 +25,20 @@ namespace SquareOfOpposition.Controls
 
         private void RotateArrow()
         {
-            Image imgArrowAIEO = this.arrowAIEO.Image;
-            imgArrowAIEO.RotateFlip(RotateFlipType.RotateNoneFlipX);
-            this.arrowAIEO.Image = imgArrowAIEO;
+            Image imgArrowEOAI = this.arrowEOAI.Image;
+            imgArrowEOAI.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            this.arrowEOAI.Image = imgArrowEOAI;
 
             Image imgArrowIOEO = this.arrowIOEO.Image;
             imgArrowIOEO.RotateFlip(RotateFlipType.RotateNoneFlipXY);
             this.arrowIOEO.Image = imgArrowIOEO;
 
             Image imgArrowAIIO = this.arrowAIIO.Image;
-            imgArrowAIIO.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            imgArrowAIIO.RotateFlip(RotateFlipType.RotateNoneFlipX);
             this.arrowAIIO.Image = imgArrowAIIO;
 
             Image imgArrowIOAI = this.arrowIOAI.Image;
-            imgArrowIOAI.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            imgArrowIOAI.RotateFlip(RotateFlipType.RotateNoneFlipY);
             this.arrowIOAI.Image = imgArrowIOAI;
         }
 
