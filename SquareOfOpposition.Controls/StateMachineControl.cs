@@ -19,6 +19,26 @@ namespace SquareOfOpposition.Controls
         public StateMachineControl()
         {
             InitializeComponent();
+            RotateArrow();
+        }
+
+        private void RotateArrow()
+        {
+            Image imgArrowAIEO = this.arrowAIEO.Image;
+            imgArrowAIEO.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            this.arrowAIEO.Image = imgArrowAIEO;
+
+            Image imgArrowIOEO = this.arrowIOEO.Image;
+            imgArrowIOEO.RotateFlip(RotateFlipType.RotateNoneFlipXY);
+            this.arrowIOEO.Image = imgArrowIOEO;
+
+            Image imgArrowAIIO = this.arrowAIIO.Image;
+            imgArrowAIIO.RotateFlip(RotateFlipType.RotateNoneFlipY);
+            this.arrowAIIO.Image = imgArrowAIIO;
+
+            Image imgArrowIOAI = this.arrowIOAI.Image;
+            imgArrowIOAI.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            this.arrowIOAI.Image = imgArrowIOAI;
         }
 
         public void setValue(Square square)
@@ -51,6 +71,18 @@ namespace SquareOfOpposition.Controls
         private void IOButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void frame_Paint(object sender, PaintEventArgs e)
+        {
+            DoubleBuffered = true;
+            for (int i = 0; i < Controls.Count; i++)
+                if (Controls[i].GetType() == typeof(PictureBox))
+                {
+                    var p = Controls[i] as PictureBox;
+                    p.Visible = false;
+                    e.Graphics.DrawImage(p.Image, p.Left, p.Top, p.Width, p.Height);
+                }
         }
     }
 }
