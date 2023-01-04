@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlTreeView", "ControlTreeView\ControlTreeView.csproj", "{CDC9BDBF-6F7C-4F08-B9D5-396F39E85DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareOfOpposition.Web", "SquareOfOpposition.Web\SquareOfOpposition.Web.csproj", "{7EA95173-85ED-4D68-8356-042093E3EC6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SquareOfOpposition.Web", "SquareOfOpposition.Web\SquareOfOpposition.Web.csproj", "{7EA95173-85ED-4D68-8356-042093E3EC6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
