@@ -13,6 +13,7 @@ builder.Services.AddDbContext<SquareOfOppositionDbContext>(options =>
 // Repositories
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<ISquareRepository, SquareRepository>();
+builder.Services.AddTransient<IStateRepository, StateRepository>();
 
 // Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

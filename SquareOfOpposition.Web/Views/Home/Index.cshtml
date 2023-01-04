@@ -2,25 +2,4 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div id="cy">
-
-</div>
-
-@section Scripts{
-    <script>
-        var cy = new cytoscape({
-            container: $('#cy'),
-            elements: [ // list of graph elements to start with
-                { // node a
-                    data: { id: 'a' }
-                },
-                { // node b
-                    data: { id: 'b' }
-                },
-                { // edge ab
-                    data: { id: 'ab', source: 'a', target: 'b' }
-                }
-            ],
-        });
-    </script>
-}
+<h3>Welcome!</h3>

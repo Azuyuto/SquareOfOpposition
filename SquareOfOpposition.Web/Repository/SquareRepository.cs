@@ -23,10 +23,10 @@ namespace SquareOfOpposition.Web.Repository
                 // Update
                 var entity = GetById(square.Id);
                 entity.Name = square.Name;
-                entity.SentanceA = square.SentanceA;
-                entity.SentanceI = square.SentanceI;
-                entity.SenranceO = square.SenranceO;
-                entity.SentanceE = square.SentanceE;
+                entity.SentenceA = square.SentenceA;
+                entity.SentenceI = square.SentenceI;
+                entity.SentenceO = square.SentenceO;
+                entity.SentenceE = square.SentenceE;
                 entity.States = square.States;
             }
 

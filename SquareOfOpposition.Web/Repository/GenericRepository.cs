@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Routing.Matching;
+using Microsoft.EntityFrameworkCore;
 using SquareOfOpposition.Web.Data;
 using SquareOfOpposition.Web.Interfaces;
 using System.Linq.Expressions;
@@ -24,9 +25,15 @@ namespace SquareOfOpposition.Web.Repository
         {
             return _context.Set<T>().Where(expression);
         }
-        public IEnumerable<T> GetAll()
+        public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeExpressions)
         {
-            return _context.Set<T>().ToList();
+            IQueryable<T> set = _context.Set<T>();
+
+            foreach (var includeExpression in includeExpressions)
+            {
+                set = set.Include(includeExpression);
+            }
+            return set.ToList();
         }
         public T GetById(int id)
         {

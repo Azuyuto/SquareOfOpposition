@@ -39,8 +39,8 @@ namespace SquareOfOpposition.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _squareRepository.AddOrUpdate(_mapper.Map<Square>(vm));
-                return RedirectToAction("Index");
+                _squareRepository.AddOrUpdate(vm.ToModel(_mapper));
+                return RedirectToAction("Index", "State");
             }
             return View("SquareForm", vm);
         }
@@ -49,7 +49,7 @@ namespace SquareOfOpposition.Web.Controllers
         {
             _squareRepository.Remove(_squareRepository.GetById(id));
             _squareRepository.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "State");
         }
     }
 }
