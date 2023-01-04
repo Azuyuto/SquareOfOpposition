@@ -10,5 +10,27 @@ namespace SquareOfOpposition.Web.Repository
         {
 
         }
+
+        public void AddOrUpdate(Square square)
+        {
+            if (square.Id == 0)
+            {
+                // Add
+                Add(square);
+            }
+            else
+            {
+                // Update
+                var entity = GetById(square.Id);
+                entity.Name = square.Name;
+                entity.SentanceA = square.SentanceA;
+                entity.SentanceI = square.SentanceI;
+                entity.SenranceO = square.SenranceO;
+                entity.SentanceE = square.SentanceE;
+                entity.States = square.States;
+            }
+
+            SaveChanges();
+        }
     }
 }

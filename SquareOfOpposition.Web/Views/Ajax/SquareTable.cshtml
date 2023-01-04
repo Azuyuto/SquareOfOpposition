@@ -18,7 +18,7 @@
                 <td>
                     <a class="text-primary" asp-controller="Square" asp-action="Edit" asp-route-id="@square.Id">Edit</a>
                     |
-                    <a class="text-danger">Remove</a>
+                    <a class="text-danger" asp-controller="Square" asp-action="Remove" asp-route-id="@square.Id">Remove</a>
                 </td>
             </tr>
         }

@@ -1,10 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using SquareOfOpposition.Web.Interfaces;
+using SquareOfOpposition.Web.Models.Domain;
+using SquareOfOpposition.Web.Repository;
 using SquareOfOpposition.Web.ViewModels;
 
 namespace SquareOfOpposition.Web.Controllers
 {
     public class SquareController : Controller
     {
+        private readonly IMapper _mapper;
+        private readonly ISquareRepository _squareRepository;
+
+        public SquareController(IMapper mapper, ISquareRepository squareRepository)
+        {
+            _mapper = mapper;
+            _squareRepository = squareRepository;
+        }
+
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         public IActionResult Add()
         {
             var vm = new SquareViewModel();
@@ -13,22 +31,25 @@ namespace SquareOfOpposition.Web.Controllers
 
         public IActionResult Edit(int id)
         {
-            return View();
+            var vm = _mapper.Map<SquareViewModel>(_squareRepository.GetById(id));
+            return View("SquareForm", vm);
         }
 
         public IActionResult Save(SquareViewModel vm)
         {
             if (ModelState.IsValid)
             {
-                // TODO: save
+                _squareRepository.AddOrUpdate(_mapper.Map<Square>(vm));
+                return RedirectToAction("Index");
             }
             return View("SquareForm", vm);
         }
 
-        public JsonResult Remove(int id)
+        public IActionResult Remove(int id)
         {
-            // TODO: remove
-            return Json(new { success = true});
+            _squareRepository.Remove(_squareRepository.GetById(id));
+            _squareRepository.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
