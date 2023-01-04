@@ -13,8 +13,7 @@ namespace SquareOfOpposition.Web.Helpers
             CreateMap<SquareViewModel, Square>();
 
             // State
-            CreateMap<State, StateViewModel>()
-                .ForMember(dest => dest.DestinationStateIds, opt => opt.MapFrom(src => src.States.Select(a => a.Id)));
+            CreateMap<State, StateViewModel>();
 
             CreateMap<SquareViewModel, Square>();
         }

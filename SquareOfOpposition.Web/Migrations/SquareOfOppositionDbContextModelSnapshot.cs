@@ -70,19 +70,30 @@ namespace SquareOfOpposition.Web.Migrations
                     b.ToTable("States");
                 });
 
-            modelBuilder.Entity("SquareOfOpposition.Web.Models.Domain.StateSet", b =>
+            modelBuilder.Entity("SquareOfOpposition.Web.Models.Domain.StateTransition", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
                     b.Property<int>("DestinationStateId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StateId")
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PickupStateId")
                         .HasColumnType("int");
 
-                    b.HasKey("DestinationStateId", "StateId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("StateId");
+                    b.HasIndex("DestinationStateId");
 
-                    b.ToTable("StateSet");
+                    b.HasIndex("PickupStateId");
+
+                    b.ToTable("StateTransitions");
                 });
 
             modelBuilder.Entity("SquareOfOpposition.Web.Models.Domain.State", b =>
@@ -96,24 +107,35 @@ namespace SquareOfOpposition.Web.Migrations
                     b.Navigation("Square");
                 });
 
-            modelBuilder.Entity("SquareOfOpposition.Web.Models.Domain.StateSet", b =>
+            modelBuilder.Entity("SquareOfOpposition.Web.Models.Domain.StateTransition", b =>
                 {
-                    b.HasOne("SquareOfOpposition.Web.Models.Domain.State", null)
-                        .WithMany()
+                    b.HasOne("SquareOfOpposition.Web.Models.Domain.State", "DestinationState")
+                        .WithMany("OutTransitions")
                         .HasForeignKey("DestinationStateId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SquareOfOpposition.Web.Models.Domain.State", null)
-                        .WithMany()
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.ClientCascade)
+                    b.HasOne("SquareOfOpposition.Web.Models.Domain.State", "PickupState")
+                        .WithMany("InTransitions")
+                        .HasForeignKey("PickupStateId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("DestinationState");
+
+                    b.Navigation("PickupState");
                 });
 
             modelBuilder.Entity("SquareOfOpposition.Web.Models.Domain.Square", b =>
                 {
                     b.Navigation("States");
+                });
+
+            modelBuilder.Entity("SquareOfOpposition.Web.Models.Domain.State", b =>
+                {
+                    b.Navigation("InTransitions");
+
+                    b.Navigation("OutTransitions");
                 });
 #pragma warning restore 612, 618
         }

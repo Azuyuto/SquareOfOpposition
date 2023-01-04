@@ -7,14 +7,14 @@
         public Square Square { get; set; }
         public int StateTypeId { get; set; }
 
-        public ICollection<State> States { get; set; }
-        public ICollection<State> StateOf { get; set; }
+        public virtual ICollection<StateTransition> InTransitions { get; set; }
+        public virtual ICollection<StateTransition> OutTransitions { get; set; }
 
         public State()
         {
             Square = new Square();
-            States = new HashSet<State>();
-            StateOf = new HashSet<State>();
+            InTransitions = new HashSet<StateTransition>();
+            OutTransitions = new HashSet<StateTransition>();
         }
     }
 }
