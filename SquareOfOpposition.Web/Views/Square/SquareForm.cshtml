@@ -1,5 +1,9 @@
 ﻿@model SquareOfOpposition.Web.ViewModels.SquareViewModel
 
+<head>
+    <link rel="stylesheet" href="~/css/SquareForm.css" asp-append-version="true" />
+</head>
+
 @{
     ViewData["Title"] = "View";
 }
@@ -8,42 +12,48 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Save">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input asp-for="Id" type="hidden" />
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SentenceA" class="control-label"></label>
-                <input asp-for="SentenceA" class="form-control" />
-                <span asp-validation-for="SentenceA" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SentenceE" class="control-label"></label>
-                <input asp-for="SentenceE" class="form-control" />
-                <span asp-validation-for="SentenceE" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SentenceI" class="control-label"></label>
-                <input asp-for="SentenceI" class="form-control" />
-                <span asp-validation-for="SentenceI" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SentenceO" class="control-label"></label>
-                <input asp-for="SentenceO" class="form-control" />
-                <span asp-validation-for="SentenceO" class="text-danger"></span>
-            </div>
-            <hr />
-            <div class="form-group">
-                <input type="submit" value="@Html.Raw(Model.Id == 0 ? "Create" : "Update")" class="btn btn-primary" />
-                @if (Model.Id != 0)
-                {
-                    <a class="btn btn-danger" asp-area="" asp-controller="Square" asp-action="Remove">Add square</a>
-                }
-            </div>
-        </form>
+            <form asp-action="Save">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input asp-for="Id" type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="sentenceRow">
+                        <div class="form-group">
+                            <label asp-for="SentenceA" class="control-label"></label>
+                            <input asp-for="SentenceA" class="form-control" />
+                            <span asp-validation-for="SentenceA" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SentenceE" class="control-label"></label>
+                            <input asp-for="SentenceE" class="form-control" />
+                            <span asp-validation-for="SentenceE" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <img src="@Url.Content("~/images/square.jpg")" alt="" id="square">
+                    <div class="sentenceRow">
+                        <div class="form-group">
+                            <label asp-for="SentenceI" class="control-label"></label>
+                            <input asp-for="SentenceI" class="form-control" />
+                            <span asp-validation-for="SentenceI" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SentenceO" class="control-label"></label>
+                            <input asp-for="SentenceO" class="form-control" />
+                            <span asp-validation-for="SentenceO" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div class="form-group">
+                        <input type="submit" value="@Html.Raw(Model.Id == 0 ? "Create" : "Update")" class="btn btn-primary" />
+                        @if (Model.Id != 0)
+                        {
+                            <a class="btn btn-danger" asp-area="" asp-controller="Square" asp-action="Remove">Add square</a>
+                        }
+                    </div>
+            </form>
+        </div>
     </div>
-</div>

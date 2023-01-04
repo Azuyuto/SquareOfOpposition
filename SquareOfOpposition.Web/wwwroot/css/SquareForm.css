@@ -1,0 +1,10 @@
+﻿body { 
+
+}
+
+
+.sentenceRow {
+    display: flex;
+    width: 30vw;
+    justify-content: space-between;
+}
