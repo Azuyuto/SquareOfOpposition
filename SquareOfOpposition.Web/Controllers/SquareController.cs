@@ -25,8 +25,9 @@ namespace SquareOfOpposition.Web.Controllers
             return View("SquareForm", vm);
         }
 
-        public JsonResult Remove()
+        public JsonResult Remove(int id)
         {
+            // TODO: remove
             return Json(new { success = true});
         }
     }

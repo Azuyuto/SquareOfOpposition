@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using SquareOfOpposition.Web.Data;
+using SquareOfOpposition.Web.Interfaces;
+using SquareOfOpposition.Web.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<SquareOfOppositionDbContext>(options => 
+    options.UseSqlServer(builder.Configuration.GetConnectionString("SquareOfOppositionConnectionString")));
+
+// Repositories
+builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+builder.Services.AddTransient<ISquareRepository, SquareRepository>();
+
+// Mapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
