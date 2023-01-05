@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public string? Name { get; set; }
+        public string? Color { get; set; }
 
         public string? SentenceA { get; set; }
         public string? SentenceE { get; set; }

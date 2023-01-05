@@ -21,8 +21,9 @@ namespace SquareOfOpposition.Web.Repository
             else
             {
                 // Update
-                var entity = GetById(square.Id);
+                var entity = GetMany(a => a.Id == square.Id).First();
                 entity.Name = square.Name;
+                entity.Color = square.Color;
                 entity.SentenceA = square.SentenceA;
                 entity.SentenceI = square.SentenceI;
                 entity.SentenceO = square.SentenceO;

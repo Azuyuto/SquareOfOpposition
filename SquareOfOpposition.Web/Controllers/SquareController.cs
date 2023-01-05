@@ -11,11 +11,13 @@ namespace SquareOfOpposition.Web.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ISquareRepository _squareRepository;
+        private readonly IStateTransitionRepository _stateTransitionRepository;
 
-        public SquareController(IMapper mapper, ISquareRepository squareRepository)
+        public SquareController(IMapper mapper, ISquareRepository squareRepository, IStateTransitionRepository stateTransitionRepository)
         {
             _mapper = mapper;
             _squareRepository = squareRepository;
+            _stateTransitionRepository = stateTransitionRepository;
         }
 
         public IActionResult Index()
@@ -31,7 +33,7 @@ namespace SquareOfOpposition.Web.Controllers
 
         public IActionResult Edit(int id)
         {
-            var vm = _mapper.Map<SquareViewModel>(_squareRepository.GetById(id));
+            var vm = _mapper.Map<SquareViewModel>(_squareRepository.GetMany(a => a.Id == id, a => a.States).First());
             return View("SquareForm", vm);
         }
 
@@ -47,7 +49,9 @@ namespace SquareOfOpposition.Web.Controllers
 
         public IActionResult Remove(int id)
         {
-            _squareRepository.Remove(_squareRepository.GetById(id));
+            var square = _squareRepository.GetMany(a => a.Id == id, a => a.States).First();
+            _stateTransitionRepository.RemoveBySquare(square);
+            _squareRepository.Remove(square);
             _squareRepository.SaveChanges();
             return RedirectToAction("Index", "State");
         }

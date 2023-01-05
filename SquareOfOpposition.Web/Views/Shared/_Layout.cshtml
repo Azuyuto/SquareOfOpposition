@@ -33,7 +33,10 @@
     <div class="container">
         <main role="main" class="pb-3">
             <div class="row">
-                <div class="col-sm-3" id="squareTable"></div>
+                <div class="col-sm-3">
+                    <div id="squareTable">
+                    </div>
+                </div>
                 <div class="col-sm-9">@RenderBody()</div>
             </div>
         </main>
@@ -47,6 +50,10 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/cytoscape/dist/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.10/lodash.js"></script>
+    <script src="~/lib/cytoscape-edgehandles/dist/cytoscape-edgehandles.js"></script>
+    <script src="~/lib/cytoscape-cxtmenu/dist/cytoscape-cxtmenu.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

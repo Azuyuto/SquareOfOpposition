@@ -30,7 +30,9 @@ namespace SquareOfOpposition.Web.Helpers
                 opt.MapFrom(src => (StateTypeEnum)src.StateTypeId))
                 .ForMember(dest => dest.StateTransition, opt =>
                 opt.MapFrom(src => src.OutTransitions));
-            CreateMap<StateViewModel, State>();
+            CreateMap<StateViewModel, State>()
+                .ForMember(dest => dest.StateTypeId, opt =>
+                opt.MapFrom(src => (int)src.StateType));
         }
     }
 }

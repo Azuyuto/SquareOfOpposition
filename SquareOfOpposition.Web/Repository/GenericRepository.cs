@@ -35,9 +35,15 @@ namespace SquareOfOpposition.Web.Repository
             }
             return set.ToList();
         }
-        public T GetById(int id)
+        public IEnumerable<T> GetMany(Expression<Func<T, bool>> expression, params Expression<Func<T, object>>[] includeExpressions)
         {
-            return _context.Set<T>().Find(id);
+            IQueryable<T> set = _context.Set<T>().Where(expression);
+
+            foreach (var includeExpression in includeExpressions)
+            {
+                set = set.Include(includeExpression);
+            }
+            return set;
         }
         public void Remove(T entity)
         {

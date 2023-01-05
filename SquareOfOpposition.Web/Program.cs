@@ -14,6 +14,7 @@ builder.Services.AddDbContext<SquareOfOppositionDbContext>(options =>
 builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddTransient<ISquareRepository, SquareRepository>();
 builder.Services.AddTransient<IStateRepository, StateRepository>();
+builder.Services.AddTransient<IStateTransitionRepository, StateTransitionRepository>();
 
 // Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

@@ -6,39 +6,151 @@
 }
 
 <div id="cy">
-
+</div>
+<hr />
+<div class="form-group">
+    <button id="draw-on" type="button" class="btn btn-primary">Draw mode on</button>
+    <button id="draw-off" type="button" class="btn btn-primary">Draw mode off</button>
 </div>
 
 @section Scripts{
     <script>
-        var elements = @Html.Raw(WebsiteHelper.GetCytoscapeElementsByStates(Model.ToList()));
-        var cy = new cytoscape({
-            container: $('#cy'),
-            style: [
-                {
-                    selector: 'node',
-                    style: {
-                        'content': 'data(name)',
-                        'text-opacity': 0.5,
-                        'text-valign': 'center',
-                        'text-halign': 'right',
-                        'background-color': '#11479e'
-                    }
+        document.addEventListener('DOMContentLoaded', function () {
+            var elements = @Html.Raw(WebsiteHelper.GetCytoscapeElementsByStates(Model.ToList()));
+            var cy = new cytoscape({
+                layout: {
+                    name: 'concentric',
+                    concentric: function (n) { return n.id() === 'j' ? 400 : 0; },
+                    levelWidth: function (nodes) { return 25; },
+                    minNodeSpacing: 200
                 },
-                {
-                    selector: 'edge',
-                    style: {
-                        'content': 'data(name)',
-                        'text-opacity': 0.5,
-                        'curve-style': 'bezier',
-                        'width': 2,
-                        'target-arrow-shape': 'triangle',
-                        'line-color': '#9dbaea',
-                        'target-arrow-color': '#9dbaea'
+                container: $('#cy'),
+                style: [
+                    {
+                        selector: 'node',
+                        style: {
+                            'content': 'data(name)',
+                            'text-opacity': 0.5,
+                            'text-valign': 'center',
+                            'text-halign': 'right',
+                            'background-color': 'data(color)'
+                        }
+                    },
+                    {
+                        selector: 'edge',
+                        style: {
+                            'content': 'data(name)',
+                            'text-opacity': 0.5,
+                            'curve-style': 'bezier',
+                            'width': 2,
+                            'target-arrow-shape': 'triangle',
+                            'line-color': '#9dbaea',
+                            'target-arrow-color': '#9dbaea'
+                        }
                     }
-                }
-            ],
-            elements: elements,
+                ],
+                elements: elements
+            });
+
+            var eh = cy.edgehandles({
+                snap: false,
+                canConnect: function (sourceNode, targetNode) {
+                    // whether an edge can be created between source and target
+                    return true; // e.g. disallow loops
+                },
+            });
+
+            cy.on('ehcomplete', (event, sourceNode, targetNode, addedEdge) => {
+                $.ajax({
+                    type: "POST",
+                    url: "/Ajax/AddTransition",
+                    data: {
+                        pickupStateId: sourceNode._private.data.id,
+                        destinationStateId: targetNode._private.data.id
+                    },
+                    success: function () {
+
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+            });
+
+            cy.cxtmenu({
+                selector: 'edge',
+                commands: [
+                    {
+                        content: '<span>Remove</span>',
+                        select: function (ele) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/Ajax/RemoveTransition",
+                                data: {
+                                    pickupStateId: ele._private.data.source,
+                                    destinationStateId: ele._private.data.target
+                                },
+                                success: function () {
+
+                                },
+                                failure: function (response) {
+                                    alert(response.responseText);
+                                },
+                                error: function (response) {
+                                    alert(response.responseText);
+                                }
+                            });
+                            cy.remove(ele);
+                        }
+                    },
+                    {
+                        content: '<span>Rename</span>',
+                        select: function (ele) {
+                            Swal.fire({
+                                title: 'New name',
+                                input: 'text',
+                                inputLabel: 'Your new name, please',
+                                inputPlaceholder: 'Your action name',
+                                closeOnConfirm: false,
+                            }).then((result) => {
+                                if (result.value) {
+                                    console.log("123");
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "/Ajax/RenameTransition",
+                                        data: {
+                                            pickupStateId: ele._private.data.source,
+                                            destinationStateId: ele._private.data.target,
+                                            newName: result.value
+                                        },
+                                        success: function () {
+
+                                        },
+                                        failure: function (response) {
+                                            alert(response.responseText);
+                                        },
+                                        error: function (response) {
+                                            alert(response.responseText);
+                                        }
+                                    });
+                                    cy.$(ele).data('name', result.value);
+                                }
+                            });
+                        }
+                    }
+                ]
+            });
+
+            document.querySelector('#draw-on').addEventListener('click', function () {
+                eh.enableDrawMode();
+            });
+
+            document.querySelector('#draw-off').addEventListener('click', function () {
+                eh.disableDrawMode();
+            });
         });
     </script>
 }

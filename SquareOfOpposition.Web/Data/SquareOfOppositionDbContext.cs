@@ -41,7 +41,8 @@ namespace SquareOfOpposition.Web.Data
             modelBuilder.Entity<StateTransition>()
                 .HasOne(pt => pt.DestinationState)
                 .WithMany(t => t.OutTransitions)
-                .HasForeignKey(pt => pt.DestinationStateId);
+                .HasForeignKey(pt => pt.DestinationStateId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

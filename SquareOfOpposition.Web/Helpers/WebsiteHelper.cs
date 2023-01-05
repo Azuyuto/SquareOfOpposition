@@ -18,7 +18,8 @@ namespace SquareOfOpposition.Web.Helpers
                 {
                     data = new CytoscapeData() { 
                         id = state.Id.ToString(),
-                        name = GetStateSentance(state.Square, state.StateType)
+                        name = GetStateSentance(state.Square, state.StateType),
+                        color = state.Square.Color
                     }
                 });
 

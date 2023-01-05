@@ -4,7 +4,7 @@ namespace SquareOfOpposition.Web.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
-        T GetById(int id);
+        IEnumerable<T> GetMany(Expression<Func<T, bool>> expression, params Expression<Func<T, object>>[] includeExpressions);
         IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeExpressions);
         IEnumerable<T> Find(Expression<Func<T, bool>> expression);
         void Add(T entity);
