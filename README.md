@@ -8,3 +8,4 @@ By odtworzyć bazę danych z projektu (connection string w appsettings.json), u�
 ```
 
 Wygląd aplikacji:
+![App Screenshot](https://raw.githubusercontent.com/Azuyuto/SquareOfOpposition/master/images/graf1.PNG)
