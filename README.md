@@ -16,7 +16,7 @@ Maszyna stanowa
 
 Edycja połączeń
 
-![App Screenshot](https://raw.githubusercontent.com/Azuyuto/SquareOfOpposition/master/images/graf2.PNG)
+![App Screenshot](https://raw.githubusercontent.com/Azuyuto/SquareOfOpposition/master/images/graf2.png)
 
 Formularz kwadratu
 
