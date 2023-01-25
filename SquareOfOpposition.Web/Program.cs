@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using SquareOfOpposition.Web.Data;
 using SquareOfOpposition.Web.Interfaces;
 using SquareOfOpposition.Web.Repository;
+using SquareOfOpposition.Web.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,7 @@ builder.Services.AddTransient(typeof(IGenericRepository<>), typeof(GenericReposi
 builder.Services.AddTransient<ISquareRepository, SquareRepository>();
 builder.Services.AddTransient<IStateRepository, StateRepository>();
 builder.Services.AddTransient<IStateTransitionRepository, StateTransitionRepository>();
+builder.Services.AddTransient<ISquareService, SquareService>();
 
 // Mapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

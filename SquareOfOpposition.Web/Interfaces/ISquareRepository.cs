@@ -4,6 +4,6 @@ namespace SquareOfOpposition.Web.Interfaces
 {
     public interface ISquareRepository : IGenericRepository<Square>
     {
-        void AddOrUpdate(Square square);
+
     }
 }

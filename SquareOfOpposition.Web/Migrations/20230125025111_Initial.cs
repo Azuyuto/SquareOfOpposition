@@ -16,11 +16,13 @@ namespace SquareOfOpposition.Web.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    ParentStateId = table.Column<int>(type: "int", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SentanceA = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SentanceE = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SentanceI = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SenranceO = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Color = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SentenceA = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SentenceE = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SentenceI = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SentenceO = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -65,7 +67,7 @@ namespace SquareOfOpposition.Web.Migrations
                         column: x => x.DestinationStateId,
                         principalTable: "States",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_StateTransitions_States_PickupStateId",
                         column: x => x.PickupStateId,
@@ -73,6 +75,11 @@ namespace SquareOfOpposition.Web.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Squares_ParentStateId",
+                table: "Squares",
+                column: "ParentStateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_States_SquareId",
@@ -88,11 +95,22 @@ namespace SquareOfOpposition.Web.Migrations
                 name: "IX_StateTransitions_PickupStateId",
                 table: "StateTransitions",
                 column: "PickupStateId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Squares_States_ParentStateId",
+                table: "Squares",
+                column: "ParentStateId",
+                principalTable: "States",
+                principalColumn: "Id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Squares_States_ParentStateId",
+                table: "Squares");
+
             migrationBuilder.DropTable(
                 name: "StateTransitions");
 

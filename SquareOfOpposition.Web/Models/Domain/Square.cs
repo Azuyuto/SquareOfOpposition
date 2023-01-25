@@ -3,6 +3,8 @@
     public class Square
     {
         public int Id { get; set; }
+        public int? ParentStateId { get; set; }
+        public State? ParentState { get; set; }
         public string? Name { get; set; }
         public string? Color { get; set; }
 

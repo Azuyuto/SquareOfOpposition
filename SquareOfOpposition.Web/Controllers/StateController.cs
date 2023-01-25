@@ -17,9 +17,14 @@ namespace SquareOfOpposition.Web.Controllers
             _stateRepository = stateRepository;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int parentStateId = 0)
         {
-            var vm = _stateRepository.GetAll(a => a.Square, a => a.OutTransitions).Select(a => _mapper.Map<StateViewModel>(a));
+            var vm = new StateListViewModel()
+            {
+                ParentStateId = parentStateId
+            };
+            vm.Initialize(_mapper, _stateRepository);
+
             return View(vm);
         }
     }

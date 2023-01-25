@@ -24,4 +24,10 @@
         }
     </tbody>
 </table>
-<a class="btn btn-primary" asp-area="" asp-controller="Square" asp-action="Add">Add square</a>
+<a class="btn btn-primary" id="addSquare">Add square</a>
+
+<script>
+    $("#addSquare").on("click", function(){
+        window.location = "/Square/Add?parentStateId=" + (typeof parentStateId !== 'undefined' ? parentStateId : 0);
+    });
+</script>

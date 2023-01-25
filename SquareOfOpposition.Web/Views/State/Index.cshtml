@@ -1,6 +1,6 @@
 ﻿@using SquareOfOpposition.Web.Helpers
 @using SquareOfOpposition.Web.ViewModels
-@model IEnumerable<StateViewModel>
+@model StateListViewModel
 @{
     ViewData["Title"] = "State Machine";
 }
@@ -15,8 +15,9 @@
 
 @section Scripts{
     <script>
+        var parentStateId = @Html.Raw(Model.ParentStateId)
         document.addEventListener('DOMContentLoaded', function () {
-            var elements = @Html.Raw(WebsiteHelper.GetCytoscapeElementsByStates(Model.ToList()));
+            var elements = @Html.Raw(WebsiteHelper.GetCytoscapeElementsByStates(Model.List));
             var cy = new cytoscape({
                 layout: {
                     name: 'concentric',
@@ -139,6 +140,19 @@
                                     cy.$(ele).data('name', result.value);
                                 }
                             });
+                        }
+                    }
+                ]
+            });
+
+            cy.cxtmenu({
+                selector: 'node',
+                commands: [
+                    {
+                        content: '<span>Enter inside</span>',
+                        select: function (ele) {
+                            console.log(ele._private.data);
+                            window.location = "/State/Index?parentStateId=" + ele._private.data.id;
                         }
                     }
                 ]

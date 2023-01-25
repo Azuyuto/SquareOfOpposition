@@ -12,12 +12,17 @@ namespace SquareOfOpposition.Web.Controllers
         private readonly IMapper _mapper;
         private readonly ISquareRepository _squareRepository;
         private readonly IStateTransitionRepository _stateTransitionRepository;
+        private readonly IStateRepository _stateRepository;
+        private readonly ISquareService _squareService;
 
-        public SquareController(IMapper mapper, ISquareRepository squareRepository, IStateTransitionRepository stateTransitionRepository)
+        public SquareController(IMapper mapper, ISquareRepository squareRepository, IStateTransitionRepository stateTransitionRepository, 
+            IStateRepository stateRepository, ISquareService squareService)
         {
             _mapper = mapper;
             _squareRepository = squareRepository;
             _stateTransitionRepository = stateTransitionRepository;
+            _stateRepository = stateRepository;
+            _squareService = squareService;
         }
 
         public IActionResult Index()
@@ -25,15 +30,20 @@ namespace SquareOfOpposition.Web.Controllers
             return View();
         }
 
-        public IActionResult Add()
+        public IActionResult Add(int? parentStateId = null)
         {
-            var vm = new SquareViewModel();
+            var vm = new SquareViewModel() 
+            { 
+                ParentStateId = parentStateId
+            };
+            vm.Initialize(_mapper, _stateRepository);
             return View("SquareForm", vm);
         }
 
         public IActionResult Edit(int id)
         {
             var vm = _mapper.Map<SquareViewModel>(_squareRepository.GetMany(a => a.Id == id, a => a.States).First());
+            vm.Initialize(_mapper, _stateRepository);
             return View("SquareForm", vm);
         }
 
@@ -41,18 +51,16 @@ namespace SquareOfOpposition.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _squareRepository.AddOrUpdate(vm.ToModel(_mapper));
-                return RedirectToAction("Index", "State");
+                _squareService.AddOrUpdate(vm.ToModel(_mapper));
+                return RedirectToAction("Index", "State", new { parentStateId = vm.ParentStateId });
             }
+            vm.Initialize(_mapper, _stateRepository);
             return View("SquareForm", vm);
         }
 
         public IActionResult Remove(int id)
         {
-            var square = _squareRepository.GetMany(a => a.Id == id, a => a.States).First();
-            _stateTransitionRepository.RemoveBySquare(square);
-            _squareRepository.Remove(square);
-            _squareRepository.SaveChanges();
+            _squareService.Remove(id);
             return RedirectToAction("Index", "State");
         }
     }

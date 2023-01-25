@@ -36,13 +36,16 @@ namespace SquareOfOpposition.Web.Data
                  .HasOne(pt => pt.PickupState)
                  .WithMany(p => p.InTransitions) // <--
                  .HasForeignKey(pt => pt.PickupStateId)
-                 .OnDelete(DeleteBehavior.Restrict); // see the note at the end
+                 .OnDelete(DeleteBehavior.Cascade); // see the note at the end
 
             modelBuilder.Entity<StateTransition>()
                 .HasOne(pt => pt.DestinationState)
                 .WithMany(t => t.OutTransitions)
                 .HasForeignKey(pt => pt.DestinationStateId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<State>().HasMany(s => s.Squares).WithOne(a => a.ParentState);
+            modelBuilder.Entity<Square>().HasMany(s => s.States).WithOne(a => a.Square);
         }
     }
 }
